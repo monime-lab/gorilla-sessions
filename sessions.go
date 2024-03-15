@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	NilSessionID = "NIL"
+	NilSID = "NIL"
 )
 
 // Session --------------------------------------------------------------------
@@ -31,11 +31,12 @@ type Session struct {
 	// user data.
 	ID string
 	// Values contains the user-data for the session.
-	Values  map[interface{}]interface{}
-	Options *Options
-	IsNew   bool
-	store   Store
-	name    string
+	Values       map[interface{}]interface{}
+	Options      *Options
+	IsNew        bool
+	isOutputOnly byte
+	store        Store
+	name         string
 }
 
 // Save is a convenience method to save this session. It is the same as calling
@@ -53,6 +54,14 @@ func (s *Session) Name() string {
 // Store returns the session store used to register the session.
 func (s *Session) Store() Store {
 	return s.store
+}
+
+func (s *Session) IsOutputOnly() byte {
+	return s.isOutputOnly
+}
+
+func (s *Session) EnableOutputOnly(enable byte) {
+	s.isOutputOnly = enable
 }
 
 func (s *Session) HasExpired() bool {

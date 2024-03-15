@@ -18,7 +18,7 @@ const (
 // NewSession is called by session stores to create a new session instance.
 func NewSession(store Store, name string) *Session {
 	return &Session{
-		Values:  make(map[interface{}]interface{}),
+		Values:  make(map[string]interface{}),
 		store:   store,
 		name:    name,
 		Options: new(Options),
@@ -31,7 +31,7 @@ type Session struct {
 	// user data.
 	ID string
 	// Values contains the user-data for the session.
-	Values       map[interface{}]interface{}
+	Values       map[string]interface{}
 	Options      *Options
 	IsNew        bool
 	isOutputOnly bool

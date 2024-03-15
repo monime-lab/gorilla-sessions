@@ -6,6 +6,11 @@ package sessions
 
 import (
 	"net/http"
+	"time"
+)
+
+const (
+	NilSessionID = "NIL"
 )
 
 // Session --------------------------------------------------------------------
@@ -48,4 +53,17 @@ func (s *Session) Name() string {
 // Store returns the session store used to register the session.
 func (s *Session) Store() Store {
 	return s.store
+}
+
+func (s *Session) HasExpired() bool {
+	if s.Options == nil {
+		return false
+	}
+	if s.Options.MaxAge < 0 {
+		return true
+	}
+	if expires := s.Options.Expires; !expires.IsZero() && !expires.After(time.Now()) {
+		return true
+	}
+	return false
 }

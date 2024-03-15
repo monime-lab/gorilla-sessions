@@ -8,22 +8,22 @@ infrastructure for custom session backends.
 
 The key features are:
 
-	* Simple API: use it as an easy way to set signed (and optionally
-	  encrypted) cookies.
-	* Built-in backends to store sessions in cookies or the filesystem.
-	* Flash messages: session values that last until read.
-	* Convenient way to switch session persistency (aka "remember me") and set
-	  other attributes.
-	* Mechanism to rotate authentication and encryption keys.
-	* Multiple sessions per request, even using different backends.
-	* Interfaces and infrastructure for custom session backends: sessions from
-	  different stores can be retrieved and batch-saved using a common API.
+  - Simple API: use it as an easy way to set signed (and optionally
+    encrypted) cookies.
+  - Built-in backends to store sessions in cookies or the filesystem.
+  - Flash messages: session values that last until read.
+  - Convenient way to switch session persistency (aka "remember me") and set
+    other attributes.
+  - Mechanism to rotate authentication and encryption keys.
+  - Multiple sessions per request, even using different backends.
+  - Interfaces and infrastructure for custom session backends: sessions from
+    different stores can be retrieved and batch-saved using a common API.
 
 Let's start with an example that shows the sessions API in a nutshell:
 
 	import (
 		"net/http"
-		"github.com/gorilla/sessions"
+		"github.com/monime-lab/gorilla-sessions"
 	)
 
 	// Note: Don't store your key in your source code. Pass it via an
@@ -103,7 +103,7 @@ so it is easy to register new datatypes for storage in sessions:
 
 	import(
 		"encoding/gob"
-		"github.com/gorilla/sessions"
+		"github.com/monime-lab/gorilla-sessions"
 	)
 
 	type Person struct {

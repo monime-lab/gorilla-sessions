@@ -1,8 +1,8 @@
 # sessions
 
-![testing](https://github.com/gorilla/sessions/actions/workflows/test.yml/badge.svg)
+![testing](https://github.com/monime-lab/gorilla-sessions/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/gorilla/sessions/branch/main/graph/badge.svg)](https://codecov.io/github/gorilla/sessions)
-[![godoc](https://godoc.org/github.com/gorilla/sessions?status.svg)](https://godoc.org/github.com/gorilla/sessions)
+[![godoc](https://godoc.org/github.com/monime-lab/gorilla-sessions?status.svg)](https://godoc.org/github.com/gorilla/sessions)
 [![sourcegraph](https://sourcegraph.com/github.com/gorilla/sessions/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/sessions?badge)
 
 ![Gorilla Logo](https://github.com/gorilla/.github/assets/53367916/d92caabf-98e0-473e-bfbf-ab554ba435e5)

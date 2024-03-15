@@ -6,12 +6,11 @@ package sessions
 
 import (
 	"encoding/base32"
+	"github.com/monime-lab/gorilla-securecookie"
 	"net/http"
 	"os"
 	"path/filepath"
 	"sync"
-
-	"github.com/gorilla/securecookie"
 )
 
 // Store is an interface for custom session stores.

@@ -1,7 +1,9 @@
-//go:build !go1.11
-// +build !go1.11
-
 package sessions
+
+import (
+	"net/http"
+	"time"
+)
 
 // Options stores configuration for a session or session store.
 //
@@ -14,6 +16,8 @@ type Options struct {
 	// MaxAge<0 means delete cookie immediately.
 	// MaxAge>0 means Max-Age attribute present and given in seconds.
 	MaxAge   int
+	Expires  time.Time
 	Secure   bool
 	HttpOnly bool
+	SameSite http.SameSite
 }

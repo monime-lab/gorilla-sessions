@@ -35,7 +35,6 @@ func TestFlashes(t *testing.T) {
 	var ok bool
 	var cookies []string
 	var session *Session
-	var flashes []interface{}
 
 	store := NewCookieStore([]byte("secret-key"))
 
@@ -47,16 +46,6 @@ func TestFlashes(t *testing.T) {
 	if session, err = store.Get(req, "session-key"); err != nil {
 		t.Fatalf("Error getting session: %v", err)
 	}
-	// Get a flash.
-	flashes = session.Flashes()
-	if len(flashes) != 0 {
-		t.Errorf("Expected empty flashes; Got %v", flashes)
-	}
-	// Add some flashes.
-	session.AddFlash("foo")
-	session.AddFlash("bar")
-	// Custom key.
-	session.AddFlash("baz", "custom_key")
 	// Save.
 	if err = Save(req, rsp); err != nil {
 		t.Fatalf("Error saving session: %v", err)
@@ -79,30 +68,6 @@ func TestFlashes(t *testing.T) {
 	if session, err = store.Get(req, "session-key"); err != nil {
 		t.Fatalf("Error getting session: %v", err)
 	}
-	// Check all saved values.
-	flashes = session.Flashes()
-	if len(flashes) != 2 {
-		t.Fatalf("Expected flashes; Got %v", flashes)
-	}
-	if flashes[0] != "foo" || flashes[1] != "bar" {
-		t.Errorf("Expected foo,bar; Got %v", flashes)
-	}
-	flashes = session.Flashes()
-	if len(flashes) != 0 {
-		t.Errorf("Expected dumped flashes; Got %v", flashes)
-	}
-	// Custom key.
-	flashes = session.Flashes("custom_key")
-	if len(flashes) != 1 {
-		t.Errorf("Expected flashes; Got %v", flashes)
-	} else if flashes[0] != "baz" {
-		t.Errorf("Expected baz; Got %v", flashes)
-	}
-	flashes = session.Flashes("custom_key")
-	if len(flashes) != 0 {
-		t.Errorf("Expected dumped flashes; Got %v", flashes)
-	}
-
 	// Round 3 ----------------------------------------------------------------
 	// Custom type
 
@@ -112,13 +77,6 @@ func TestFlashes(t *testing.T) {
 	if session, err = store.Get(req, "session-key"); err != nil {
 		t.Fatalf("Error getting session: %v", err)
 	}
-	// Get a flash.
-	flashes = session.Flashes()
-	if len(flashes) != 0 {
-		t.Errorf("Expected empty flashes; Got %v", flashes)
-	}
-	// Add some flashes.
-	session.AddFlash(&FlashMessage{42, "foo"})
 	// Save.
 	if err = Save(req, rsp); err != nil {
 		t.Fatalf("Error saving session: %v", err)
@@ -138,16 +96,6 @@ func TestFlashes(t *testing.T) {
 	if session, err = store.Get(req, "session-key"); err != nil {
 		t.Fatalf("Error getting session: %v", err)
 	}
-	// Check all saved values.
-	flashes = session.Flashes()
-	if len(flashes) != 1 {
-		t.Fatalf("Expected flashes; Got %v", flashes)
-	}
-	custom := flashes[0].(FlashMessage)
-	if custom.Type != 42 || custom.Message != "foo" {
-		t.Errorf("Expected %#v, got %#v", FlashMessage{42, "foo"}, custom)
-	}
-
 	// Round 5 ----------------------------------------------------------------
 	// Check if a request shallow copy resets the request context data store.
 

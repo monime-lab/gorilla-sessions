@@ -34,7 +34,7 @@ type Session struct {
 	Values       map[interface{}]interface{}
 	Options      *Options
 	IsNew        bool
-	isOutputOnly byte
+	isOutputOnly bool
 	store        Store
 	name         string
 }
@@ -56,11 +56,11 @@ func (s *Session) Store() Store {
 	return s.store
 }
 
-func (s *Session) IsOutputOnly() byte {
+func (s *Session) IsOutputOnly() bool {
 	return s.isOutputOnly
 }
 
-func (s *Session) EnableOutputOnly(enable byte) {
+func (s *Session) EnableOutputOnly(enable bool) {
 	s.isOutputOnly = enable
 }
 

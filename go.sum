@@ -1,3 +1,5 @@
 github.com/google/gofuzz v1.2.0 h1:xRy4A+RhZaiKjJ1bPfwQ8sedCA+YS2YcCHW6ec7JMi0=
 github.com/monime-lab/gorilla-securecookie v0.0.0-20240315061549-ca052cd25929 h1:HiQuADA5n+J43R2OHkwTRtSG7XQlKYlgkpYtyuicP8U=
 github.com/monime-lab/gorilla-securecookie v0.0.0-20240315061549-ca052cd25929/go.mod h1:W4quFui7eYHvVg+oheysA2Ps7kChau+YX0HILqDB+GE=
+github.com/monime-lab/gorilla-securecookie v0.0.0-20240315081004-08593e634afa h1:Ads+XTYWzJLKeT26d9iq23k1XkkFPIba0WP9KqhmtzU=
+github.com/monime-lab/gorilla-securecookie v0.0.0-20240315081004-08593e634afa/go.mod h1:W4quFui7eYHvVg+oheysA2Ps7kChau+YX0HILqDB+GE=

@@ -1,3 +1,0 @@
-# github.com/monime-lab/gorilla-securecookie v0.0.0-20240315061549-ca052cd25929
-## explicit; go 1.20
-github.com/monime-lab/gorilla-securecookie
